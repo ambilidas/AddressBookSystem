@@ -64,6 +64,13 @@ namespace AddressBookSystem
             contactArray.Add(contactobj.phoneNumber);
             contactArray.Add(contactobj.email);
             Console.WriteLine("Contact has been created");
+            //displaying contact details
+            Console.WriteLine("-----------ADDRESS BOOK------------");
+            foreach (var element in contactArray)
+            {
+                Console.WriteLine(element);
+
+            }
         }
     }
 }
