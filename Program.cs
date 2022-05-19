@@ -11,6 +11,7 @@ namespace AddressBookSystem
             AddressBook.Modify();
             //AddressBook.PersonDetails obj = new AddressBook.PersonDetails(); 
             AddressBook.DisplayContact(AddressBook.personDetails);
+            AddressBook.Delete();
 
             //Console.WriteLine("\nEnter 1 for adding contact ");
             //int key = Convert.ToInt32(Console.ReadLine());

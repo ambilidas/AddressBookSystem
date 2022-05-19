@@ -23,12 +23,12 @@ namespace AddressBookSystem
         }
         public static void Contact()
         {
-            Console.WriteLine("Do you want to add a new contact(Y/N) ");
+            Console.WriteLine("\nDo you want to add a new contact(Y/N) ");
             char choice=Convert.ToChar(Console.ReadLine());
             while(choice == 'y' || choice == 'Y')
             {
                 bool exist = false;
-                //object creation
+                
                 
                 //input contact details
                 Console.Write("Enter the first name:");
@@ -155,6 +155,32 @@ namespace AddressBookSystem
                 }
                
 
+            }
+        }
+        public static void Delete()
+        {
+            Console.WriteLine("\n Do you want to delete an existing contact? (Y/N)  ");
+            char choice=Convert.ToChar(Console.ReadLine());
+            while(choice == 'y' || choice == 'Y')
+            {
+                Console.WriteLine("\n Enter the first name of contact you want to delete: ");
+                string delete = Console.ReadLine();
+                bool exist = false;
+                foreach (var elements in contactList.ToList())
+                {
+                    if (elements.FirstName == personDetails.FirstName)
+                    {
+                        exist = true;
+                        contactList.Remove(personDetails);
+                        Console.WriteLine("\n Contact deleted!! ");
+                    }
+                }
+                if (exist == false)
+                {
+                    Console.WriteLine("\nContact doesn't exist ");
+                }
+                Console.WriteLine("\n Do you want to delete an existing contact? (Y/N)  ");
+                choice = Convert.ToChar(Console.ReadLine());
             }
         }
   }
