@@ -9,6 +9,8 @@ namespace AddressBookSystem
 {
     public class Contact
     {
+       
+        
         //declaration of variables
         public string firstName;
         public string lastName;
@@ -18,7 +20,6 @@ namespace AddressBookSystem
         public int zip;
         public long phoneNumber;
         public string email;
-        //public Contact[] contactArray; //declaration of array for storing class instances
         public int contact = 0;
         //constructor
         public Contact(string firstName, string lastName, string address, string city, string state, int zip, long phoneNumber, string email)
@@ -55,14 +56,15 @@ namespace AddressBookSystem
 
             Contact contactobj = new Contact(firstname, lastname, address, city, state, zip, phonenumber, email);
             ArrayList contactArray = new ArrayList();
-            contactArray.Add(contactobj.firstName);
-            contactArray.Add(contactobj.lastName);
-            contactArray.Add(contactobj.address);
-            contactArray.Add(contactobj.city);
-            contactArray.Add(contactobj.state);
-            contactArray.Add(contactobj.zip);
-            contactArray.Add(contactobj.phoneNumber);
-            contactArray.Add(contactobj.email);
+            contactArray.Add(firstname);
+            contactArray.Add(lastname);
+            contactArray.Add(address);
+            contactArray.Add(city);
+            contactArray.Add(state);
+            contactArray.Add(zip);
+            contactArray.Add(phonenumber);
+            contactArray.Add(email);
+           
             Console.WriteLine("Contact has been created");
             //displaying contact details
             Console.WriteLine("-----------ADDRESS BOOK------------");

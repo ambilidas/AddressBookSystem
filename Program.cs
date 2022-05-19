@@ -7,20 +7,30 @@ namespace AddressBookSystem
         {
             Console.WriteLine("\t\t Welcome to Address Book Program");
 
-            //create object for class
+            AddressBook.Contact();
+            AddressBook.Modify();
+            //AddressBook.PersonDetails obj = new AddressBook.PersonDetails(); 
+            AddressBook.DisplayContact(AddressBook.personDetails);
 
-            Console.WriteLine("\nEnter 1 for adding contact ");
-            int key = Convert.ToInt32(Console.ReadLine());
-            switch (key)
-            {
-                case 1:
-                    Contact.createContact();
-                    break;
-                default:
-                    Console.WriteLine("Invalid key");
-                    Program.Main(args);
-                    break;
-            }
+            //Console.WriteLine("\nEnter 1 for adding contact ");
+            //int key = Convert.ToInt32(Console.ReadLine());
+            //switch (key)
+            //{
+            //    case 1:
+            //        Contact.createContact();
+            //        break;
+            //    default:
+            //        Console.WriteLine("Invalid key");
+            //        Program.Main(args);
+            //        break;
+            //}
+            //Console.WriteLine("Do you want to modify contact?(Y/N)");
+            //string modify = Console.ReadLine();
+            //if (modify == "Y" || modify == "y")
+            //{
+            //    Contact.Modify();
+            //}
+
         }
     }
 }
