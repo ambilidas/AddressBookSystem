@@ -6,12 +6,14 @@ namespace AddressBookSystem
         public static void Main(string[] args)
         {
             Console.WriteLine("\t\t Welcome to Address Book Program");
-
+            
             AddressBook.Contact();
             AddressBook.Modify();
-            //AddressBook.PersonDetails obj = new AddressBook.PersonDetails(); 
-            AddressBook.DisplayContact(AddressBook.personDetails);
+            AddressBook.ContactList();
             AddressBook.Delete();
+           // AddressBook.PersonDetails personDetails = new AddressBook.PersonDetails();
+            //AddressBook.DisplayContact(AddressBook.personDetails);
+
 
             //Console.WriteLine("\nEnter 1 for adding contact ");
             //int key = Convert.ToInt32(Console.ReadLine());

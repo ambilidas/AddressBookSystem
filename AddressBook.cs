@@ -9,7 +9,7 @@ namespace AddressBookSystem
   public class AddressBook
   {
         public static List<PersonDetails> contactList = new List<PersonDetails>();
-       public static PersonDetails personDetails = new PersonDetails();
+       
         public class PersonDetails
         {
             public string FirstName { get; set; }
@@ -28,10 +28,10 @@ namespace AddressBookSystem
             while(choice == 'y' || choice == 'Y')
             {
                 bool exist = false;
-                
-                
+                //object creation
+                 PersonDetails personDetails = new PersonDetails();
                 //input contact details
-                Console.Write("Enter the first name:");
+                 Console.Write("Enter the first name:");
                 personDetails.FirstName = Console.ReadLine();
                 Console.Write("Enter last name: ");
                 personDetails.LastName = Console.ReadLine();
@@ -50,7 +50,7 @@ namespace AddressBookSystem
 
                 foreach(var elements in contactList.ToList())
                 {
-                    if(elements.FirstName == personDetails.FirstName)
+                    if(elements.FirstName == personDetails.FirstName && elements.LastName == personDetails.LastName)
                     {
                         exist = true;
                         Console.WriteLine("\nContact is already exist");
@@ -153,35 +153,55 @@ namespace AddressBookSystem
                     Console.WriteLine("\n Do you want to modify?(Y/N) ");
                     modify = Convert.ToChar(Console.ReadLine());
                 }
-               
-
             }
         }
         public static void Delete()
         {
-            Console.WriteLine("\n Do you want to delete an existing contact? (Y/N)  ");
-            char choice=Convert.ToChar(Console.ReadLine());
-            while(choice == 'y' || choice == 'Y')
+            if(contactList.Count != 0)
             {
-                Console.WriteLine("\n Enter the first name of contact you want to delete: ");
-                string delete = Console.ReadLine();
-                bool exist = false;
-                foreach (var elements in contactList.ToList())
-                {
-                    if (elements.FirstName == personDetails.FirstName)
-                    {
-                        exist = true;
-                        contactList.Remove(personDetails);
-                        Console.WriteLine("\n Contact deleted!! ");
-                    }
-                }
-                if (exist == false)
-                {
-                    Console.WriteLine("\nContact doesn't exist ");
-                }
                 Console.WriteLine("\n Do you want to delete an existing contact? (Y/N)  ");
-                choice = Convert.ToChar(Console.ReadLine());
+                char choice = Convert.ToChar(Console.ReadLine());
+                while (choice == 'y' || choice == 'Y')
+                {
+                    
+                    Console.WriteLine("\n Enter the first name of contact you want to delete: ");
+                    string delete = Console.ReadLine();
+                    bool exist = false;
+                    foreach (var elements in contactList.ToList())
+                    {
+                        if (elements.FirstName.ToUpper() == delete.ToUpper())
+                        {
+                            exist = true;
+                            contactList.Remove(elements);
+                            Console.WriteLine("\n Contact deleted!! ");
+                        }
+                    }
+                    if (exist == false)
+                    {
+                        Console.WriteLine("\nContact doesn't exist ");
+                    }
+                    Console.WriteLine("\n Do you want to delete an existing contact? (Y/N)  ");
+                    choice = Convert.ToChar(Console.ReadLine());
+                }
             }
+           
+        }
+        public static void ContactList()
+        {
+            if(contactList.Count == 0)
+            {
+                Console.WriteLine("\n Address Book is Empty!!");
+                Console.WriteLine("To exit press any key ");
+                Console.ReadKey();
+                return;
+            }
+            Console.WriteLine("\n-----------ADDRESS BOOK------------\n");
+            foreach (var element in contactList)
+            {
+                DisplayContact(element);
+            }
+            Console.WriteLine("To exit press any key ");
+            Console.ReadKey();
         }
   }
 }
