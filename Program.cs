@@ -1,16 +1,31 @@
 ﻿using System;
+using System.Collections;
 namespace AddressBookSystem
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("\t\t Welcome to Address Book Program");
-            
-            AddressBook.Contact();
-            AddressBook.Modify();
-            AddressBook.ContactList();
-            AddressBook.Delete();
+            Console.WriteLine("\t\t WELCOME TO ADDRESS BOOK PROGRAM");
+            AddressBook addressBook1 = new AddressBook();
+            AddressBook addressBook2 = new AddressBook();
+            Console.WriteLine("Address Book 1");
+            addressBook1.Contact();
+            addressBook1.Modify();
+            addressBook1.ContactList();
+            addressBook1.Delete();
+            Console.WriteLine("Address Book 2");
+            addressBook2.Contact();
+            addressBook2.Modify();
+            addressBook2.ContactList();
+            addressBook2.Delete();
+            Dictionary<int,AddressBook> list = new Dictionary<int,AddressBook>();
+            list.Add(1,addressBook1);
+            list.Add(2,addressBook2);
+            foreach(var address in list)
+            {
+                Console.WriteLine("Key: "+address.Key+"Value: "+address.Value);
+            }
            // AddressBook.PersonDetails personDetails = new AddressBook.PersonDetails();
             //AddressBook.DisplayContact(AddressBook.personDetails);
 

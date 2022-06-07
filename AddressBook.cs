@@ -8,20 +8,20 @@ namespace AddressBookSystem
 {
   public class AddressBook
   {
-        public static List<PersonDetails> contactList = new List<PersonDetails>();
+        public List<PersonDetails> contactList = new List<PersonDetails>();
        
         public class PersonDetails
         {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public string Address { get; set; } 
-            public string City { get; set; }
-            public string State { get; set; }   
-            public int Zip { get; set; }
-            public long PhoneNumber { get; set; }
-            public string Email { get; set; }   
+            public string FirstName;
+            public string LastName;
+            public string Address;
+            public string City;
+            public string State;
+            public int Zip;
+            public long PhoneNumber;
+            public string Email;  
         }
-        public static void Contact()
+        public  void Contact()
         {
             Console.WriteLine("\nDo you want to add a new contact(Y/N) ");
             char choice=Convert.ToChar(Console.ReadLine());
@@ -65,7 +65,7 @@ namespace AddressBookSystem
             }
            
         }
-        public static void DisplayContact(PersonDetails personDetails)
+        public  void DisplayContact(PersonDetails personDetails)
         {
             Console.WriteLine("\nFirst Name: " + personDetails.FirstName);
             Console.WriteLine("Last Name: " + personDetails.LastName);
@@ -78,7 +78,7 @@ namespace AddressBookSystem
             Console.WriteLine("------------------------------------------------");
 
         }
-        public static void Modify()
+        public  void Modify()
         {
             if(contactList.Count != 0)
             {
@@ -155,7 +155,7 @@ namespace AddressBookSystem
                 }
             }
         }
-        public static void Delete()
+        public void Delete()
         {
             if(contactList.Count != 0)
             {
@@ -186,7 +186,7 @@ namespace AddressBookSystem
             }
            
         }
-        public static void ContactList()
+        public void ContactList()
         {
             if(contactList.Count == 0)
             {
