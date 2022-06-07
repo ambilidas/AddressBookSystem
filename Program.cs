@@ -22,11 +22,23 @@ namespace AddressBookSystem
             Dictionary<int,AddressBook> list = new Dictionary<int,AddressBook>();
             list.Add(1,addressBook1);
             list.Add(2,addressBook2);
-            foreach(var address in list)
-            {
-                Console.WriteLine("Key: "+address.Key+"Value: "+address.Value);
-            }
-           // AddressBook.PersonDetails personDetails = new AddressBook.PersonDetails();
+            //UC8
+            Console.WriteLine("Do you want to search on address book 1?(Y/N)");
+            char choice=Convert.ToChar(Console.ReadLine());
+            if(choice == 'Y')
+             addressBook1.Search();
+             Console.WriteLine("Do you want to search on address book 2?(Y/N)");
+            char choice2=Convert.ToChar(Console.ReadLine());
+            if(choice2 == 'Y')
+                addressBook2.Search();  
+
+            //foreach(var address in list)
+            //{
+            //    Console.WriteLine("Key: "+address.Key+"Value: "+address.Value);
+            //    list.Contains()
+            //}
+
+            // AddressBook.PersonDetails personDetails = new AddressBook.PersonDetails();
             //AddressBook.DisplayContact(AddressBook.personDetails);
 
 

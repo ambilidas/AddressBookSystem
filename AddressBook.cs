@@ -50,11 +50,13 @@ namespace AddressBookSystem
 
                 foreach(var elements in contactList.ToList())
                 {
-                    if(elements.FirstName == personDetails.FirstName && elements.LastName == personDetails.LastName)
+                    //UC7
+                    if (elements.FirstName == personDetails.FirstName && elements.LastName == personDetails.LastName)
                     {
                         exist = true;
                         Console.WriteLine("\nContact is already exist");
                     }
+
                 }
                 if(exist == false)
                 {
@@ -202,6 +204,18 @@ namespace AddressBookSystem
             }
             Console.WriteLine("To exit press any key ");
             Console.ReadKey();
+        }
+        public void Search()
+        {
+            Console.WriteLine("Enter the city or state for searching");
+            string search = Console.ReadLine();
+            foreach (var elements in contactList.ToList())
+            {
+                if((elements.City.ToUpper() == search.ToUpper()) || (elements.State.ToUpper() == search.ToUpper() ))
+                {
+                    Console.WriteLine(elements.FirstName);
+                }
+            }
         }
   }
 }
