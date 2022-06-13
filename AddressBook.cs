@@ -271,6 +271,14 @@ namespace AddressBookSystem
             }
             Console.WriteLine("No of persons in city " + city + " is " + count);
         }
+        public void SortAddressBook()
+        {
+            foreach (KeyValuePair<string, List<Contact>> user in addressBookDict)
+            {
+                user.Value.Sort((emp1, emp2) => emp1.firstName.CompareTo(emp2.firstName));
+            }
+            ViewAddressBook();
+        }
 
         //public void ContactList()
         //{

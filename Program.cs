@@ -55,6 +55,10 @@ namespace AddressBookSystem
                     case 8:
                         addressBook.CountByCityOrState();
                         break;
+                    case 9:
+                        Console.WriteLine("Contacts in sorted order by person's name");
+                        addressBook.SortAddressBook();
+                        break;
                     default:
                         Console.WriteLine("Invalid Input!");
                         break;
