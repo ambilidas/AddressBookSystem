@@ -59,6 +59,9 @@ namespace AddressBookSystem
                         //Console.WriteLine("Contacts in sorted order by person's name");
                         addressBook.SortAddressBook();
                         break;
+                    case 10:
+                        addressBook.WriteFile();
+                        break;
                     default:
                         Console.WriteLine("Invalid Input!");
                         break;

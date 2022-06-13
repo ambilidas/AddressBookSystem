@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace AddressBookSystem
 {
   public class AddressBook : IContact
@@ -306,6 +308,11 @@ namespace AddressBookSystem
                     break;
             }
             ViewAddressBook();
+        }
+        public void WriteFile()
+        {
+            FileIO file = new FileIO();
+            file.WriteUsingStreamWriter(addressBookDict);
         }
 
         //public void ContactList()
