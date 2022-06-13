@@ -62,6 +62,9 @@ namespace AddressBookSystem
                     case 10:
                         addressBook.WriteFile();
                         break;
+                    case 11:
+                        addressBook.WriteCsvFile();
+                        break;
                     default:
                         Console.WriteLine("Invalid Input!");
                         break;

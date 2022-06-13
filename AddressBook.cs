@@ -314,6 +314,11 @@ namespace AddressBookSystem
             FileIO file = new FileIO();
             file.WriteUsingStreamWriter(addressBookDict);
         }
+        public void WriteCsvFile()
+        {
+            FileIO file = new FileIO();
+            file.WriteInCsvFile(addressBookDict);
+        }
 
         //public void ContactList()
         //{

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +11,7 @@ namespace AddressBookSystem
     public class FileIO
     {
         string path = @"D:\bridgelabz1\AddressBookSystem\TextFile1.txt";
-
+        string csvpath = @"D:\bridgelabz1\AddressBookSystem\addbook.csv";
         public void WriteUsingStreamWriter(Dictionary<string, List<Contact>> addressBookDict)
         {
             int count = 1;
@@ -38,6 +40,29 @@ namespace AddressBookSystem
         {
             string lines = File.ReadAllText(path);
             Console.WriteLine(lines);
+            Console.WriteLine("File Read Successfully");
+        }
+        public void WriteInCsvFile(Dictionary<string, List<Contact>> addressBookDict)
+        {
+            using (StreamWriter sw = new StreamWriter(csvpath))
+            using (CsvWriter csvWriter = new CsvWriter(sw, CultureInfo.InvariantCulture))
+                foreach (KeyValuePair<string, List<Contact>> user in addressBookDict)
+                {
+                    csvWriter.WriteRecords(user.Value.ToList());
+                }
+            Console.WriteLine("File Written Successfully");
+        }
+        public void ReadCsvFile()
+        {
+            using (StreamReader streamreader = new StreamReader(csvpath))
+            using (CsvReader csvReader = new CsvReader(streamreader, CultureInfo.InvariantCulture))
+            {
+                List<Contact> records = csvReader.GetRecords<Contact>().ToList();
+                foreach (var contact in records)
+                {
+                    Console.WriteLine(contact);
+                }
+            }
             Console.WriteLine("File Read Successfully");
         }
     }
