@@ -260,6 +260,17 @@ namespace AddressBookSystem
                 }
             }
         }
+        public void CountByCityOrState()
+        {
+            int count = 0;
+            Console.WriteLine("Enter city or state name");
+            string city= Console.ReadLine();
+            foreach(KeyValuePair<string, List<Contact>> user in addressBookDict)
+            {
+                count += user.Value.Count(x => x.city == city || x.state == city);
+            }
+            Console.WriteLine("No of persons in city " + city + " is " + count);
+        }
 
         //public void ContactList()
         //{

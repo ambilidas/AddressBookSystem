@@ -52,6 +52,12 @@ namespace AddressBookSystem
                     case 7:
                         addressBook.ViewPersonInCityOrState();
                         break;
+                    case 8:
+                        addressBook.CountByCityOrState();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Input!");
+                        break;
                 }
             }
            
