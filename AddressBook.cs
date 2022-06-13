@@ -319,6 +319,11 @@ namespace AddressBookSystem
             FileIO file = new FileIO();
             file.WriteInCsvFile(addressBookDict);
         }
+        public void WriteJsonFile()
+        {
+            FileIO file = new FileIO();
+            file.WriteInJsonFile(addressBookDict);
+        }
 
         //public void ContactList()
         //{
