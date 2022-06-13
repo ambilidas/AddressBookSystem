@@ -56,7 +56,7 @@ namespace AddressBookSystem
                         addressBook.CountByCityOrState();
                         break;
                     case 9:
-                        Console.WriteLine("Contacts in sorted order by person's name");
+                        //Console.WriteLine("Contacts in sorted order by person's name");
                         addressBook.SortAddressBook();
                         break;
                     default:

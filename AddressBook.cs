@@ -273,9 +273,37 @@ namespace AddressBookSystem
         }
         public void SortAddressBook()
         {
-            foreach (KeyValuePair<string, List<Contact>> user in addressBookDict)
+            Console.WriteLine("Choose an option 1-4\n 1.Sort by name\n 2.Sort by city\n 3.Sort by state\n 4.Sort by Zip code\n");
+            int choice =Convert.ToInt32(Console.ReadLine());
+            switch (choice)
             {
-                user.Value.Sort((emp1, emp2) => emp1.firstName.CompareTo(emp2.firstName));
+                case 1:
+                    foreach (KeyValuePair<string, List<Contact>> user in addressBookDict)
+                    {
+                        user.Value.Sort((emp1, emp2) => emp1.firstName.CompareTo(emp2.firstName));
+                    }
+                    break;
+                case 2:
+                    foreach (KeyValuePair<string, List<Contact>> user in addressBookDict)
+                    {
+                        user.Value.Sort((emp1, emp2) => emp1.city.CompareTo(emp2.city));
+                    }
+                    break;
+                case 3:
+                    foreach (KeyValuePair<string, List<Contact>> user in addressBookDict)
+                    {
+                        user.Value.Sort((emp1, emp2) => emp1.state.CompareTo(emp2.state));
+                    }
+                    break;
+                case 4:
+                    foreach (KeyValuePair<string, List<Contact>> user in addressBookDict)
+                    {
+                        user.Value.Sort((emp1, emp2) => emp1.zipcode.CompareTo(emp2.zipcode));
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Choose between 1-4");
+                    break;
             }
             ViewAddressBook();
         }
