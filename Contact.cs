@@ -9,70 +9,20 @@ namespace AddressBookSystem
 {
     public class Contact
     {
-       
-        
-        //declaration of variables
-        public string firstName;
-        public string lastName;
-        public string address;
-        public string city;
-        public string state;
-        public int zip;
-        public long phoneNumber;
-        public string email;
-        public int contact = 0;
-        //constructor
-        public Contact(string firstName, string lastName, string address, string city, string state, int zip, long phoneNumber, string email)
+
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string address { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public int zipcode { get; set; }
+        public long phoneNumber { get; set; }
+        public string email { get; set; }
+
+        public override string ToString()
         {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.address = address;
-            this.city = city;
-            this.state = state;
-            this.zip = zip;
-            this.phoneNumber = phoneNumber;
-            this.email = email;
-
+            return $"firstname:{firstName} lastname:{lastName} address:{address} city:{city} state:{state} zipcode:{zipcode} phone:{phoneNumber} email:{email}";
         }
-        //contact creation
-        public static void createContact()
-        {
-            Console.Write("Enter the first name:");
-            string firstname = Console.ReadLine();
-            Console.Write("Enter last name: ");
-            string lastname = Console.ReadLine();
-            Console.Write("Enter the Address: ");
-            string address = Console.ReadLine();
-            Console.Write("Enter the City: ");
-            string city = Console.ReadLine();
-            Console.Write("Enter the State: ");
-            string state = Console.ReadLine();
-            Console.Write("Enter Zip code: ");
-            int zip = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Enter Phone Number: ");
-            long phonenumber = Convert.ToInt64(Console.ReadLine());
-            Console.Write("Enter Email: ");
-            string email = Console.ReadLine();
 
-            Contact contactobj = new Contact(firstname, lastname, address, city, state, zip, phonenumber, email);
-            ArrayList contactArray = new ArrayList();
-            contactArray.Add(firstname);
-            contactArray.Add(lastname);
-            contactArray.Add(address);
-            contactArray.Add(city);
-            contactArray.Add(state);
-            contactArray.Add(zip);
-            contactArray.Add(phonenumber);
-            contactArray.Add(email);
-           
-            Console.WriteLine("Contact has been created");
-            //displaying contact details
-            Console.WriteLine("-----------ADDRESS BOOK------------");
-            foreach (var element in contactArray)
-            {
-                Console.WriteLine(element);
-
-            }
-        }
     }
 }

@@ -7,31 +7,61 @@ namespace AddressBookSystem
         public static void Main(string[] args)
         {
             Console.WriteLine("\t\t WELCOME TO ADDRESS BOOK PROGRAM");
-            AddressBook addressBook1 = new AddressBook();
-            AddressBook addressBook2 = new AddressBook();
-            Console.WriteLine("Address Book 1");
-            addressBook1.Contact();
-            addressBook1.Modify();
-            addressBook1.ContactList();
-            addressBook1.Delete();
-            Console.WriteLine("Address Book 2");
-            addressBook2.Contact();
-            addressBook2.Modify();
-            addressBook2.ContactList();
-            addressBook2.Delete();
-            Dictionary<int,AddressBook> list = new Dictionary<int,AddressBook>();
-            list.Add(1,addressBook1);
-            list.Add(2,addressBook2);
-            //UC8
-            Console.WriteLine("Do you want to search on address book 1?(Y/N)");
-            char choice=Convert.ToChar(Console.ReadLine());
-            if(choice == 'Y')
-             addressBook1.Search();
-             Console.WriteLine("Do you want to search on address book 2?(Y/N)");
-            char choice2=Convert.ToChar(Console.ReadLine());
-            if(choice2 == 'Y')
-                addressBook2.Search();  
 
+            AddressBook addressBook = new AddressBook();
+            // AddressBook addressBook2 = new AddressBook();
+            while (true)
+            {
+
+
+                Console.WriteLine("Please choose an option:");
+
+                Console.WriteLine("1: View Contact \n2: Add New Contact(s) \n3: Modify Contact \n4: Delete Contact " +
+                   "\n5: Add Multiple Addressbook\n6: Find person in city/state\n7: View person in city/state\n8: Count by city/state\n" +
+                   "9: Sort Contact List\n10: Add new book and save into file\n11: Add new book and save into csv file\n" +
+                   "12: Add new book and save into json file\n13: Exit\n");
+                int option = Convert.ToInt32(Console.ReadLine());
+                switch (option)
+                {
+                    case 1:
+                        addressBook.DisplayContact();
+                        break;
+                    case 2:
+                        addressBook.Contact();
+                        break;
+                    case 3:
+                        Console.WriteLine("Enter the first name of contact that you want to modify");
+                        string input = Console.ReadLine();
+                        addressBook.Modify(input);
+                        break;
+                    case 4:
+                        Console.WriteLine("Enter the first name of contact");
+                        string fname = Console.ReadLine();
+                        Console.WriteLine("Enter the last name of contact");
+                        string lname = Console.ReadLine();
+                        addressBook.Delete(fname, lname);
+                        addressBook.DisplayContact();
+                        break;
+                    case 5:
+                        addressBook.AddNewAddressBook();
+                        addressBook.DisplayContact();
+                        break;
+                    case 6:
+                        addressBook.SearchPersonInCityOrState();
+                        break;
+                    case 7:
+                        //addressBook.ViewPersonInCityOrState();
+                        break;
+                }
+            }
+           
+           
+            
+             //addressBook1.ContactList();
+            
+           
+            
+           
             //foreach(var address in list)
             //{
             //    Console.WriteLine("Key: "+address.Key+"Value: "+address.Value);
