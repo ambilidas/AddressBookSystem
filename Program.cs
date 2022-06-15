@@ -16,10 +16,7 @@ namespace AddressBookSystem
 
                 Console.WriteLine("\nPlease choose an option:");
 
-                Console.WriteLine("1: View Contact \n2: Add New Contact(s) \n3: Modify Contact \n4: Delete Contact " +
-                   "\n5: Add Multiple Addressbook\n6: Find person in city/state\n7: View person in city/state\n8: Count by city/state\n" +
-                   "9: Sort Contact List\n10: Add new book and save into file\n11: Add new book and save into csv file\n" +
-                   "12: Add new book and save into json file");
+                Console.WriteLine("1: View Contact \n2: Add New Contact \n3: Modify the Contact \n4: Delete the  \n5: Add Multiple Addressbook\n6: Search person in city/state\n7: View person in city/state\n8: Count by city/state\n9: Sort Contact List\n10: Add new book and save into file\n11: Add new book and save into csv file\n12: Add new book and save into json file");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -73,43 +70,6 @@ namespace AddressBookSystem
                         break;
                 }
             }
-           
-           
-            
-             //addressBook1.ContactList();
-            
-           
-            
-           
-            //foreach(var address in list)
-            //{
-            //    Console.WriteLine("Key: "+address.Key+"Value: "+address.Value);
-            //    list.Contains()
-            //}
-
-            // AddressBook.PersonDetails personDetails = new AddressBook.PersonDetails();
-            //AddressBook.DisplayContact(AddressBook.personDetails);
-
-
-            //Console.WriteLine("\nEnter 1 for adding contact ");
-            //int key = Convert.ToInt32(Console.ReadLine());
-            //switch (key)
-            //{
-            //    case 1:
-            //        Contact.createContact();
-            //        break;
-            //    default:
-            //        Console.WriteLine("Invalid key");
-            //        Program.Main(args);
-            //        break;
-            //}
-            //Console.WriteLine("Do you want to modify contact?(Y/N)");
-            //string modify = Console.ReadLine();
-            //if (modify == "Y" || modify == "y")
-            //{
-            //    Contact.Modify();
-            //}
-
         }
     }
 }

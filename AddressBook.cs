@@ -316,34 +316,6 @@ namespace AddressBookSystem
             file.ReadJsonFile();
         }
 
-        //public void ContactList()
-        //{
-        //    if(contactList.Count == 0)
-        //    {
-        //        Console.WriteLine("\n Address Book is Empty!!");
-        //        Console.WriteLine("To exit press any key ");
-        //        Console.ReadKey();
-        //        return;
-        //    }
-        //    Console.WriteLine("\n-----------ADDRESS BOOK------------\n");
-        //    foreach (var element in contactList)
-        //    {
-        //        DisplayContact(element);
-        //    }
-        //    Console.WriteLine("To exit press any key ");
-        //    Console.ReadKey();
-        //}
-        //public void Search()
-        //{
-        //    Console.WriteLine("Enter the city or state for searching");
-        //    string search = Console.ReadLine();
-        //    foreach (var elements in contactList.ToList())
-        //    {
-        //        if((elements.City.ToUpper() == search.ToUpper()) || (elements.State.ToUpper() == search.ToUpper() ))
-        //        {
-        //            Console.WriteLine(elements.FirstName);
-        //        }
-        //    }
-        //}
+       
     }
 }
