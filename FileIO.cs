@@ -12,43 +12,43 @@ namespace AddressBookSystem
     public class FileIO
     {
         string path = @"D:\bridgelabz1\AddressBookSystem\TextFile1.txt";
-        string csvpath = @"D:\bridgelabz1\AddressBookSystem\addbook.csv";
-        string jsonpath = @"D:\bridgelabz1\AddressBookSystem\addbook.json";
-        public void WriteUsingStreamWriter(Dictionary<string, List<Contact>> addressBookDict)
+        string csvpath = @"D:\bridgelabz1\AddressBookSystem\addbookcsv.csv";
+        string jsonpath = @"D:\bridgelabz1\AddressBookSystem\addbookjson.json";
+        public void WriteTextfileStreamWriter(Dictionary<string, List<Contact>> AddBookDictObj)
         {
             int count = 1;
-            foreach (KeyValuePair<string, List<Contact>> user in addressBookDict)
+            foreach (KeyValuePair<string, List<Contact>> user in AddBookDictObj)
             {
-                using (StreamWriter sr = File.AppendText(path))
+                using (StreamWriter stream = File.AppendText(path))
                 {
-                    sr.WriteLine("Name of AddressBook: " + user.Key);
+                    stream.WriteLine("Name of AddressBook: " + user.Key);
                     foreach (Contact contact in user.Value)
                     {
-                        sr.Write(" FirstName: " + contact.firstName);
-                        sr.Write(" LastName: " + contact.lastName);
-                        sr.Write(" City: " + contact.city);
-                        sr.Write(" State: " + contact.state);
-                        sr.Write(" Address: " + contact.address);
-                        sr.Write(" zipCode: " + contact.zipcode);
-                        sr.Write(" PhoneNo: " + contact.phoneNumber);
-                        sr.Write(" Email: " + contact.email);
+                        stream.Write(" FirstName: " + contact.firstName);
+                        stream.Write(" LastName: " + contact.lastName);
+                        stream.Write(" City: " + contact.city);
+                        stream.Write(" State: " + contact.state);
+                        stream.Write(" Address: " + contact.address);
+                        stream.Write(" zipCode: " + contact.zipcode);
+                        stream.Write(" PhoneNo: " + contact.phoneNumber);
+                        stream.Write(" Email: " + contact.email);
                         count++;
                     }
                 }
             }
             Console.WriteLine("File Written Successfully");
         }
-        public void ReadFile()
+        public void ReadTextFile()
         {
-            string lines = File.ReadAllText(path);
-            Console.WriteLine(lines);
+            string text = File.ReadAllText(path);
+            Console.WriteLine(text);
             Console.WriteLine("File Read Successfully");
         }
-        public void WriteInCsvFile(Dictionary<string, List<Contact>> addressBookDict)
+        public void WriteInCsvFile(Dictionary<string, List<Contact>> AddBookDictObj)
         {
-            using (StreamWriter sw = new StreamWriter(csvpath))
-            using (CsvWriter csvWriter = new CsvWriter(sw, CultureInfo.InvariantCulture))
-                foreach (KeyValuePair<string, List<Contact>> user in addressBookDict)
+            using (StreamWriter stream = new StreamWriter(csvpath))
+            using (CsvWriter csvWriter = new CsvWriter(stream, CultureInfo.InvariantCulture))
+                foreach (KeyValuePair<string, List<Contact>> user in AddBookDictObj)
                 {
                     csvWriter.WriteRecords(user.Value.ToList());
                 }
@@ -67,17 +67,17 @@ namespace AddressBookSystem
             }
             Console.WriteLine("File Read Successfully");
         }
-        public void WriteInJsonFile(Dictionary<string, List<Contact>> addressBookDict)
+        public void WriteInJsonFile(Dictionary<string, List<Contact>> AddBookDictObj)
         {
-            string res = JsonConvert.SerializeObject(addressBookDict);
-            File.WriteAllText(jsonpath, res);
+            string serialize = JsonConvert.SerializeObject(AddBookDictObj);
+            File.WriteAllText(jsonpath, serialize);
             Console.WriteLine("File Written Successfully");
         }
         public void ReadJsonFile()
         {
-            string data = File.ReadAllText(jsonpath);
-            Dictionary<string, List<Contact>> addbook = JsonConvert.DeserializeObject<Dictionary<string, List<Contact>>>(data);
-            foreach (KeyValuePair<string, List<Contact>> user in addbook)
+            string jsondata = File.ReadAllText(jsonpath);
+            Dictionary<string, List<Contact>> addbookjson = JsonConvert.DeserializeObject<Dictionary<string, List<Contact>>>(jsondata);
+            foreach (KeyValuePair<string, List<Contact>> user in addbookjson)
             {
                 Console.WriteLine("\nName of Address Book: " + user.Key);
                 foreach (Contact contact in user.Value)
@@ -85,6 +85,7 @@ namespace AddressBookSystem
                     Console.WriteLine(contact);
                 }
             }
+            Console.WriteLine("File Read Successfully");
         }
     }
 }

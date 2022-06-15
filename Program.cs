@@ -14,7 +14,7 @@ namespace AddressBookSystem
             {
 
 
-                Console.WriteLine("Please choose an option:");
+                Console.WriteLine("\nPlease choose an option:");
 
                 Console.WriteLine("1: View Contact \n2: Add New Contact(s) \n3: Modify Contact \n4: Delete Contact " +
                    "\n5: Add Multiple Addressbook\n6: Find person in city/state\n7: View person in city/state\n8: Count by city/state\n" +
@@ -60,7 +60,7 @@ namespace AddressBookSystem
                         addressBook.SortAddressBook();
                         break;
                     case 10:
-                        addressBook.WriteFile();
+                        addressBook.WriteTextFile();
                         break;
                     case 11:
                         addressBook.WriteCsvFile();

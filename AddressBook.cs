@@ -11,27 +11,15 @@ namespace AddressBookSystem
   public class AddressBook : IContact
   {
         List<Contact> contactList;
-        Dictionary<string, List<Contact>> addressBookDict;
-        //public List<PersonDetails> contactList = new List<PersonDetails>();
+        Dictionary<string, List<Contact>> AddBookDictObj;
+        
         public AddressBook()
         {
             contactList = new List<Contact>();
-            addressBookDict = new Dictionary<string, List<Contact>>();
+            AddBookDictObj = new Dictionary<string, List<Contact>>();
         }
 
-        //public class PersonDetails
-        //{
-        //    public string FirstName;
-        //    public string LastName;
-        //    public string Address;
-        //    public string City;
-        //    public string State;
-        //    public int Zip;
-        //    public long PhoneNumber;
-        //    public string Email;
-
-            
-        //}
+       
         public  List<Contact> Contact()
         {
             Console.WriteLine("\nEnter the number of contacts you want to add");
@@ -183,7 +171,7 @@ namespace AddressBookSystem
             {
                 Console.WriteLine("Enter name of the address book:");
                 string addBookName = Console.ReadLine();
-                if (addressBookDict.ContainsKey(addBookName))
+                if (AddBookDictObj.ContainsKey(addBookName))
                 {
                     Console.WriteLine("Address Book Name Already Exists");
                 }
@@ -191,9 +179,9 @@ namespace AddressBookSystem
                 {
                     AddressBook books = new AddressBook();
                     List<Contact> list = books.Contact();
-                    addressBookDict.Add(addBookName, list);
+                    AddBookDictObj.Add(addBookName, list);
                 }
-                foreach (KeyValuePair<string, List<Contact>> item in addressBookDict)
+                foreach (KeyValuePair<string, List<Contact>> item in AddBookDictObj)
                 {
                     Console.WriteLine($"key:{item.Key} value:{item.Value}");
                 }
@@ -203,7 +191,7 @@ namespace AddressBookSystem
         public void ViewAddressBook()
         {
             int count = 1;
-            foreach (KeyValuePair<string, List<Contact>> user in addressBookDict)
+            foreach (KeyValuePair<string, List<Contact>> user in AddBookDictObj)
             {
                 Console.WriteLine("\nName of Address Book: " + user.Key);
                 foreach (Contact contact in user.Value)
@@ -226,7 +214,7 @@ namespace AddressBookSystem
             Console.WriteLine("enter the city or state name");
             string city = Console.ReadLine();
             int found = 0;
-            foreach (KeyValuePair<string, List<Contact>> user in addressBookDict)
+            foreach (KeyValuePair<string, List<Contact>> user in AddBookDictObj)
             {
                 foreach (Contact contact in user.Value)
                 {
@@ -244,7 +232,7 @@ namespace AddressBookSystem
         {
             Console.WriteLine("enter the city or state name");
             string city = Console.ReadLine();
-            foreach (KeyValuePair<string, List<Contact>> user in addressBookDict)
+            foreach (KeyValuePair<string, List<Contact>> user in AddBookDictObj)
             {
                 foreach (Contact contact in user.Value)
                 {
@@ -267,7 +255,7 @@ namespace AddressBookSystem
             int count = 0;
             Console.WriteLine("Enter city or state name");
             string city= Console.ReadLine();
-            foreach(KeyValuePair<string, List<Contact>> user in addressBookDict)
+            foreach(KeyValuePair<string, List<Contact>> user in AddBookDictObj)
             {
                 count += user.Value.Count(x => x.city == city || x.state == city);
             }
@@ -280,25 +268,25 @@ namespace AddressBookSystem
             switch (choice)
             {
                 case 1:
-                    foreach (KeyValuePair<string, List<Contact>> user in addressBookDict)
+                    foreach (KeyValuePair<string, List<Contact>> user in AddBookDictObj)
                     {
                         user.Value.Sort((emp1, emp2) => emp1.firstName.CompareTo(emp2.firstName));
                     }
                     break;
                 case 2:
-                    foreach (KeyValuePair<string, List<Contact>> user in addressBookDict)
+                    foreach (KeyValuePair<string, List<Contact>> user in AddBookDictObj)
                     {
                         user.Value.Sort((emp1, emp2) => emp1.city.CompareTo(emp2.city));
                     }
                     break;
                 case 3:
-                    foreach (KeyValuePair<string, List<Contact>> user in addressBookDict)
+                    foreach (KeyValuePair<string, List<Contact>> user in AddBookDictObj)
                     {
                         user.Value.Sort((emp1, emp2) => emp1.state.CompareTo(emp2.state));
                     }
                     break;
                 case 4:
-                    foreach (KeyValuePair<string, List<Contact>> user in addressBookDict)
+                    foreach (KeyValuePair<string, List<Contact>> user in AddBookDictObj)
                     {
                         user.Value.Sort((emp1, emp2) => emp1.zipcode.CompareTo(emp2.zipcode));
                     }
@@ -309,20 +297,23 @@ namespace AddressBookSystem
             }
             ViewAddressBook();
         }
-        public void WriteFile()
+        public void WriteTextFile()
         {
             FileIO file = new FileIO();
-            file.WriteUsingStreamWriter(addressBookDict);
+            file.WriteTextfileStreamWriter(AddBookDictObj);
+            file.ReadTextFile();
         }
         public void WriteCsvFile()
         {
             FileIO file = new FileIO();
-            file.WriteInCsvFile(addressBookDict);
+            file.WriteInCsvFile(AddBookDictObj);
+            file.ReadCsvFile();
         }
         public void WriteJsonFile()
         {
             FileIO file = new FileIO();
-            file.WriteInJsonFile(addressBookDict);
+            file.WriteInJsonFile(AddBookDictObj);
+            file.ReadJsonFile();
         }
 
         //public void ContactList()
